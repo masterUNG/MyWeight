@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Created by masterUNG on 1/28/15 AD.
@@ -15,6 +16,7 @@ public class WeightTABLE {
     private SQLiteDatabase writeSQLite, readSQLite;
     private double douWeight;
     private String strLastDate;
+    private boolean bolStatusDatabase;
 
     public static final String TABLE_WEIGHT = "weightTABLE";
     public static final String COLUMN_ID = "_id";
@@ -30,6 +32,17 @@ public class WeightTABLE {
         readSQLite = objMyOpenHelper.getReadableDatabase();
 
     }   // Constructor
+
+    public boolean checkCursor() {
+        Cursor objCursor = readSQLite.query(TABLE_WEIGHT, new String[] {COLUMN_ID, COLUMN_DATE, COLUMN_WEIGHT}, null, null, null, null, null);
+
+        if (objCursor != null) {
+            objCursor.moveToLast();
+        }
+
+        Log.d("weight", "Cursor ==> " + String.valueOf(objCursor.isBeforeFirst()));
+        return objCursor.isBeforeFirst();
+    }
 
     public String lastUpdata() {
 
