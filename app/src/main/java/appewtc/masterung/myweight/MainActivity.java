@@ -42,35 +42,35 @@ public class MainActivity extends ActionBarActivity {
         //Tester Update
        // testerUpdate();
 
-        //Check Empty Database
-        checkEmptyDatabase();
+        //check Emtry Database
+        checkEmtryDatabase();
 
         //Set CurrentWeight
         // setCurrentWeight();
 
     }   // onCreate
 
-    private void checkEmptyDatabase() {
+    private void checkEmtryDatabase() {
 
         if (objWeightTABLE.checkCursor()) {
-            goFormActivity();
+
+            Intent objIntent = new Intent(MainActivity.this, FormRecordWeightActivty.class);
+            startActivity(objIntent);
+
         } else {
+
             setCurrentWeight();
+
         }
 
-        //goFormActivity();
+    }   //checkEmtryDatabase
 
-    }   // checkEmptyDatabase
-
-    private void goFormActivity() {
-        Intent objIntent = new Intent(MainActivity.this, FormRecordWeightActivty.class);
-        startActivity(objIntent);
-    }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        checkEmptyDatabase();
+        //setCurrentWeight();
+        checkEmtryDatabase();
     }
 
     private void setCurrentWeight() {
