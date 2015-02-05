@@ -32,6 +32,17 @@ public class WeightTABLE {
 
     }   // Constructor
 
+    public Cursor readAllData() {
+
+        Cursor objCursor = readSQLite.query(TABLE_WEIGHT, new String[]{COLUMN_ID, COLUMN_DATE, COLUMN_WEIGHT}, null, null, null, null, null);
+
+        if (objCursor != null) {
+            objCursor.moveToFirst();
+        }
+
+        return objCursor;
+    }   // readAllData
+
     public boolean checkCursor() {
 
         Cursor objCursor = readSQLite.query(TABLE_WEIGHT, new String[] {COLUMN_ID, COLUMN_DATE, COLUMN_WEIGHT}, null, null, null, null, null);

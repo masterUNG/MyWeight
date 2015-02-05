@@ -50,6 +50,13 @@ public class MainActivity extends ActionBarActivity {
 
     }   // onCreate
 
+    public void clickHistory(View view) {
+
+        Intent objIntent = new Intent(MainActivity.this, HistoryActivity.class);
+        startActivity(objIntent);
+
+    }   // clickHitory
+
     private void checkEmtryDatabase() {
 
         if (objWeightTABLE.checkCursor()) {
